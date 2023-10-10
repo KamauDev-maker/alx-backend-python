@@ -3,14 +3,14 @@
 Run time for four parallel comprehensions
 """
 import asyncio
-import time 
+import time
 async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
 async def measure_runtime() -> float:
     """
     Executes async_comprehension four times in parallel
-    and measure_runtime 
+    and measure_runtime
     """
     start_time = time.time()
     await asyncio.gather(async_comprehension(), async_comprehension(),
