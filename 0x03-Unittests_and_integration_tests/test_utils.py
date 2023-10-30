@@ -51,6 +51,7 @@ class TestAccessNestedMap(unittest.TestCase):
         with self.assertRaises(expected_exception_message):
             access_nested_map(nested_map, path)
 
+
 class TestGetJson(unittest.TestCase):
     """
     class for testing a mock http
@@ -77,6 +78,7 @@ class TestGetJson(unittest.TestCase):
         mock_get.assert_called_once_with(test_url)
         self.assertEqual(result, test_payload)
 
+
 class TestMemoize(unittest.TestCase):
     """
     Testing memoize function
@@ -95,7 +97,7 @@ class TestMemoize(unittest.TestCase):
         with patch.object(
                 TestClass,
                 "a_method",
-                return_value = lambda: 42,
+                return_value=lambda: 42,
                 ) as memo_fxn:
             test_class = TestClass()
             self.assertEqual(test_class.a_property(), 42)
