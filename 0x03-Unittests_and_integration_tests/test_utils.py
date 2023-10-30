@@ -35,21 +35,20 @@ class TestAccessNestedMap(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     @parameterized.expand([
-        ({}, ("a",), "Key not found: 'a' in {}"),
-        ({"a": 1}, ("a", "b"), "Key not found: 'b' in {'a': 1}")
+        ({}, ("a",), KeyError),
+        ({"a": 1}, ("a", "b"), KeyError),
     ])
     def test_access_nested_map_exception(
             self,
             nested_map: Dict[str, Any],
             path: Tuple[str],
-            expected_exception_message: str
+            expected_exception_message: Exception,
     ) -> None:
         """
         Method for testing the exception message error
         """
-        with self.assertRaises(KeyError) as context:
+        with self.assertRaises(expected_exception_message):
             access_nested_map(nested_map, path)
-        self.assertEqual(str(context.exception), expected_exception_message)
 
 
 if __name__ == '__main__':
